@@ -9,12 +9,15 @@ const laptopRoute = express.Router();
 
 
 laptopRoute.get("/", async (req, res) => {
-    let { sort } = req.query;
+    let { sort, brand } = req.query;
 
 
     try {
         let data = null;
-        if (sort) {
+        if (brand) {
+            data = await laptopModel.find({ brand: brand })
+        }
+        else if (sort) {
             if (sort == "des") {
                 data = await laptopModel.find().sort({ price: -1 })
             } else {
@@ -23,6 +26,7 @@ laptopRoute.get("/", async (req, res) => {
         } else {
             data = await laptopModel.find();
         }
+
 
 
 
