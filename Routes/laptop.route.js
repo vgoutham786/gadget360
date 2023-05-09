@@ -16,16 +16,18 @@ laptopRoute.get("/", async (req, res) => {
         let data = null;
         if (brand) {
             data = await laptopModel.find({ brand: brand })
-        }
-        else if (sort) {
-            if (sort == "des") {
-                data = await laptopModel.find().sort({ price: -1 })
-            } else {
-                data = await laptopModel.find().sort({ price: 1 })
-            }
         } else {
-            data = await laptopModel.find();
-        }
+            if (sort) {
+                if (sort == "des") {
+                    data = await laptopModel.find().sort({ price: -1 })
+                } else {
+                    data = await laptopModel.find().sort({ price: 1 })
+                }
+            }else{
+                data = await laptopModel.find();
+            }
+            }
+
 
 
 
