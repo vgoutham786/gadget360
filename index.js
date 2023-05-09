@@ -2,8 +2,7 @@ const express = require("express");
 const { connectToDb } = require("./db");
 const { userRoute } = require("./Routes/user.route");
 const { laptopRoute } = require("./Routes/laptop.route");
-const { timeLogger } = require("./middleware/timestamp.middleware");
-const { limiter } = require("./middleware/rateLimiter.middleware");
+
 const cors = require("cors");
 
 const app = express();
